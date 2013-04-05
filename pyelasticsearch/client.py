@@ -544,7 +544,7 @@ class ElasticSearch(object):
             body,
             query_params=query_params)
 
-    @es_kwargs('routing', 'size')
+    @es_kwargs('routing', 'size', 'search_type')
     def search(self, query, **kwargs):
         """
         Execute a search query against one or more indices and get back search
@@ -567,7 +567,7 @@ class ElasticSearch(object):
         """
         return self._search_or_count('_search', query, **kwargs)
 
-    @es_kwargs('df', 'analyzer', 'default_operator', 'source', 'routing')
+    @es_kwargs('df', 'analyzer', 'default_operator', 'source', 'routing', 'search_type')
     def count(self, query, **kwargs):
         """
         Execute a query against one or more indices and get hit count.
